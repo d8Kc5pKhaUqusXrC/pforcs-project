@@ -21,3 +21,6 @@ automateQualys.py
 * Console: KPIs showing the ratio by server of vulnerabilities of severity 4 & 5 older than 30 days & 60 days respectively
 * output.xlsx - a file which may be further processed manually
 * A pie chart showing the number of Vulnerabilities by Owner
+
+## References
+I have included the references inline in the code
