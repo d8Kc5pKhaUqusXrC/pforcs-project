@@ -92,7 +92,7 @@ for index, vulnerability in dfQualysData.iterrows():
     # https://thispointer.com/pandas-6-different-ways-to-iterate-over-rows-in-a-dataframe-update-while-iterating-row-by-row/#iterate-and-update
     dfQualysData.at[index, "Owner"] = vulnerability["Owner"]
 
-# Plot a Pie chart of the owners
+# Plot a Pie chart of the responsibilities
 owner_data = dfQualysData["Owner"].value_counts()
 owner_data.plot.pie(autopct='%1.1f%%')
 plt.title("Vulnerabilities by Owner")
