@@ -1,15 +1,25 @@
+# automateQualys.py
+# This program automates a number of manual steps that the author manually completes every month.
+# Time saved: approx 1/2 day every month.
+# Requires the base.csv to be in the same directory as the py file.
+# author: Mark Brislane
+# date: 2022/01/05
+
 # import the required modules
 import pandas
 import matplotlib.pyplot as plt
 
 # Open the CSV input file and read it into a dataframe.
-dfQualysData = pandas.read_csv(
-    "base.csv",  # Filename of the csv file to open
-    header=3,  # Header descriptions are on row 4 (0 index)
-    # nrows=8,
-    usecols=[*range(0, 5), 6, 7, *range(10, 12), 15, 16, 31, 34],  # Only read in certain columns, rest are superfluous
-    parse_dates=["First Detected", "Last Detected"]  # Set two columns to date format
-)
+try:
+    dfQualysData = pandas.read_csv(
+        "base.csv",  # Filename of the csv file to open
+        header=3,  # Header descriptions are on row 4 (0 index)
+        # nrows=8,
+        usecols=[*range(0, 5), 6, 7, *range(10, 12), 15, 16, 31, 34],  # Only read in certain columns, rest are superfluous
+        parse_dates=["First Detected", "Last Detected"]  # Set two columns to date format
+    )
+except:
+    print("There appears to have been an error with the input file (base.csv) - please ensure it is in the same directory.")
 # print("Number of rows in the file is", len(dfQualysData))
 
 # For some reason, Qualys duplicates some vulnerabilities, so remove them
