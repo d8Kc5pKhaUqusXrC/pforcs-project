@@ -1,6 +1,6 @@
 # import the required modules
 import pandas
-from matplotlib.pyplot import pie
+import matplotlib.pyplot as plt
 
 # Open the CSV input file and read it into a dataframe.
 dfQualysData = pandas.read_csv(
@@ -93,7 +93,11 @@ for index, vulnerability in dfQualysData.iterrows():
     dfQualysData.at[index, "Owner"] = vulnerability["Owner"]
 
 # Plot a Pie chart of the owners
-dfQualysData["Owner"].value_counts().plot(kind=pie)
+owner_data = dfQualysData["Owner"].value_counts()
+owner_data.plot.pie(autopct='%1.1f%%')
+plt.title("Vulnerabilities by Owner")
+plt.ylabel("")
+plt.show()
 
 # Output our result to an Excel file for further manual processing if necessary
 dfQualysData.to_excel("output.xlsx", index=False)
